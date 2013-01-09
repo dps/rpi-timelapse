@@ -81,7 +81,13 @@ def main():
             camera.set_shutter_speed(secs=config[0])
             camera.set_iso(iso=str(config[1]))
             ui.backlight_off()
-            filename = camera.capture_image_and_download()
+            try:
+              filename = camera.capture_image_and_download()
+            except Exception, e:
+              print "Error on capture." + str(e)
+              print "Retrying..."
+              # Occasionally, capture can fail but retries will be successful.
+              continue
             prev_acquired = last_acquired
             brightness = float(idy.mean_brightness(filename))
             last_acquired = datetime.now()
