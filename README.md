@@ -3,10 +3,6 @@ rpi-timelapse
 
 A timelapse camera controller for Raspberry Pi and Canon EOS 350d (should work with any camera supported by `gphoto2` with minor tweaks), with an optional UI and controls on the Adafruit LCD Pi plate.
 
-Demo video
-----------
-
-<iframe width="960" height="720" src="http://www.youtube.com/embed/AZbK4acS5Mc" frameborder="0" allowfullscreen></iframe>
 
 Installation
 ------------
@@ -35,3 +31,5 @@ Convert the resulting JPEGs to a timelapse movie
 ```
 ffmpeg -r 18 -q:v 2 -start_number XXXX -i /tmp/timelapse/IMG_%d.JPG output.mp4
 ```
+
+[Demo Video on YouTube (view in HD)](http://www.youtube.com/watch?v=AZbK4acS5Mc)
