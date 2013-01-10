@@ -1,4 +1,5 @@
 import subprocess
+import time
 import unittest
 
 from wrappers import GPhoto
@@ -118,6 +119,14 @@ class GPhotoTestCase(unittest.TestCase):
         self._gphoto.set_shutter_speed(secs="2")
         assert ['gphoto2 --get-config /main/settings/shutterspeed'] in self._test_subprocess.get_invocations()
         assert ['gphoto2 --set-config /main/settings/shutterspeed=4'] in self._test_subprocess.get_invocations()
+
+    def test_get_camera_time(self):
+        data = ''.join(file('testdata/datetime', 'r').readlines())
+        popen = FakePopen(data, '', 0)
+        self._test_subprocess.set_Popen_for_cmd('gphoto2 --get-config /main/status/datetime', popen)
+        tim = self._gphoto.get_camera_date_time()
+        assert time.strptime("2013-01-10 07:16:59", "%Y-%m-%d %H:%M:%S") == tim
+
 
 
 if __name__ == '__main__':

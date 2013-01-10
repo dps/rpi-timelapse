@@ -1,4 +1,5 @@
 import re
+import time
 
 class Wrapper(object):
 
@@ -68,6 +69,19 @@ class GPhoto(Wrapper):
         self._CMD = 'gphoto2'
         self._shutter_choices = None
         self._iso_choices = None
+
+    def get_camera_date_time(self):
+        code, out, err = self.call(self._CMD + " --get-config /main/status/datetime")
+        if code != 0:
+            raise Exception(err)
+        timestr = None
+        for line in out.split('\n'):
+            if line.startswith('Current:'):
+                timestr = line[line.find(':'):]
+        if not timestr:
+            raise Exception('No time parsed from ' + out)
+        stime = time.strptime(timestr, ": %Y-%m-%d %H:%M:%S")
+        return stime
 
 
     def capture_image_and_download(self):
