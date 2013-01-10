@@ -1,0 +1,9 @@
+wlan0     IEEE 802.11bgn  ESSID:"146csbr"  Nickname:"<WIFI@REALTEK>"
+          Mode:Managed  Frequency:2.437 GHz  Access Point: B8:C7:5D:08:8E:BD   
+          Bit Rate:150 Mb/s   Sensitivity:0/0  
+          Retry:off   RTS thr:off   Fragment thr:off
+          Power Management:off
+          Link Quality=100/100  Signal level=50/100  Noise level=0/100
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+

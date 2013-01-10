@@ -91,6 +91,8 @@ class GPhoto(Wrapper):
                 choices[line.split(' ')[2]] = line.split(' ')[1]
             if line.startswith('Current:'):
                 current = line.split(' ')[1]
+        # The following hacks are because gphoto2 lies about eos 350d settings
+        # If you use a different camera you will probably need to remove.
         choices["30"] = "30"
         choices["10"] = "10"
         choices["13"] = "13"
